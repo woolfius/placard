@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/"
+		xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:tns="http://10.22.33.20/hr_portal"
+		xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+		xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsd1="http://10.22.33.20/hr_portal"
+		name="HR_Portal"
+		targetNamespace="http://10.22.33.20/hr_portal">
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				xmlns:xs1="http://10.22.33.20/hr_portal"
+				targetNamespace="http://10.22.33.20/hr_portal"
+				elementFormDefault="qualified">
+			<xs:element name="GetInfo">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreatePerson">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="structure"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreatePersonResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ChangePerson">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="structure"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ChangePersonResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPosition">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="innercall"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPositionResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetMarital">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetMaritalResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetSchedule">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetScheduleResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetSubdivision">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="innercall"
+								type="xs:boolean"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetSubdivisionResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetEducationType">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="innercall"
+								type="xs:boolean"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetEducationTypeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetFormEducation">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetFormEducationResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetInstitution">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="innercall"
+								type="xs:boolean"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetInstitutionResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetSpecialty">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"/>
+						<xs:element name="innercall"
+								type="xs:boolean"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetSpecialtyResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreatEmployee">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="structure"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreatEmployeeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDismissalArticles">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDismissalArticlesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDismissalReasons">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDismissalReasonsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FireEmployee">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code"
+								type="xs:string"/>
+						<xs:element name="dismissalreason"
+								type="xs:string"/>
+						<xs:element name="dismissalarticle"
+								type="xs:string"/>
+						<xs:element name="enddate"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FireEmployeeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AttachDoc">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="sid"
+								type="xs:string"/>
+						<xs:element name="file"
+								type="xs:string"/>
+						<xs:element name="name"
+								type="xs:string"/>
+						<xs:element name="type"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AttachDocResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAccruals">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAccrualsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddAppointement">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="structure"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AddAppointementResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReAppointment">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="structure"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReAppointmentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</types>
+	<message name="GetInfoRequestMessage">
+		<part name="parameters"
+				element="tns:GetInfo"/>
+	</message>
+	<message name="GetInfoResponseMessage">
+		<part name="parameters"
+				element="tns:GetInfoResponse"/>
+	</message>
+	<message name="CreatePersonRequestMessage">
+		<part name="parameters"
+				element="tns:CreatePerson"/>
+	</message>
+	<message name="CreatePersonResponseMessage">
+		<part name="parameters"
+				element="tns:CreatePersonResponse"/>
+	</message>
+	<message name="ChangePersonRequestMessage">
+		<part name="parameters"
+				element="tns:ChangePerson"/>
+	</message>
+	<message name="ChangePersonResponseMessage">
+		<part name="parameters"
+				element="tns:ChangePersonResponse"/>
+	</message>
+	<message name="GetPositionRequestMessage">
+		<part name="parameters"
+				element="tns:GetPosition"/>
+	</message>
+	<message name="GetPositionResponseMessage">
+		<part name="parameters"
+				element="tns:GetPositionResponse"/>
+	</message>
+	<message name="GetMaritalRequestMessage">
+		<part name="parameters"
+				element="tns:GetMarital"/>
+	</message>
+	<message name="GetMaritalResponseMessage">
+		<part name="parameters"
+				element="tns:GetMaritalResponse"/>
+	</message>
+	<message name="GetScheduleRequestMessage">
+		<part name="parameters"
+				element="tns:GetSchedule"/>
+	</message>
+	<message name="GetScheduleResponseMessage">
+		<part name="parameters"
+				element="tns:GetScheduleResponse"/>
+	</message>
+	<message name="GetSubdivisionRequestMessage">
+		<part name="parameters"
+				element="tns:GetSubdivision"/>
+	</message>
+	<message name="GetSubdivisionResponseMessage">
+		<part name="parameters"
+				element="tns:GetSubdivisionResponse"/>
+	</message>
+	<message name="GetEducationTypeRequestMessage">
+		<part name="parameters"
+				element="tns:GetEducationType"/>
+	</message>
+	<message name="GetEducationTypeResponseMessage">
+		<part name="parameters"
+				element="tns:GetEducationTypeResponse"/>
+	</message>
+	<message name="GetFormEducationRequestMessage">
+		<part name="parameters"
+				element="tns:GetFormEducation"/>
+	</message>
+	<message name="GetFormEducationResponseMessage">
+		<part name="parameters"
+				element="tns:GetFormEducationResponse"/>
+	</message>
+	<message name="GetInstitutionRequestMessage">
+		<part name="parameters"
+				element="tns:GetInstitution"/>
+	</message>
+	<message name="GetInstitutionResponseMessage">
+		<part name="parameters"
+				element="tns:GetInstitutionResponse"/>
+	</message>
+	<message name="GetSpecialtyRequestMessage">
+		<part name="parameters"
+				element="tns:GetSpecialty"/>
+	</message>
+	<message name="GetSpecialtyResponseMessage">
+		<part name="parameters"
+				element="tns:GetSpecialtyResponse"/>
+	</message>
+	<message name="CreatEmployeeRequestMessage">
+		<part name="parameters"
+				element="tns:CreatEmployee"/>
+	</message>
+	<message name="CreatEmployeeResponseMessage">
+		<part name="parameters"
+				element="tns:CreatEmployeeResponse"/>
+	</message>
+	<message name="GetDismissalArticlesRequestMessage">
+		<part name="parameters"
+				element="tns:GetDismissalArticles"/>
+	</message>
+	<message name="GetDismissalArticlesResponseMessage">
+		<part name="parameters"
+				element="tns:GetDismissalArticlesResponse"/>
+	</message>
+	<message name="GetDismissalReasonsRequestMessage">
+		<part name="parameters"
+				element="tns:GetDismissalReasons"/>
+	</message>
+	<message name="GetDismissalReasonsResponseMessage">
+		<part name="parameters"
+				element="tns:GetDismissalReasonsResponse"/>
+	</message>
+	<message name="FireEmployeeRequestMessage">
+		<part name="parameters"
+				element="tns:FireEmployee"/>
+	</message>
+	<message name="FireEmployeeResponseMessage">
+		<part name="parameters"
+				element="tns:FireEmployeeResponse"/>
+	</message>
+	<message name="AttachDocRequestMessage">
+		<part name="parameters"
+				element="tns:AttachDoc"/>
+	</message>
+	<message name="AttachDocResponseMessage">
+		<part name="parameters"
+				element="tns:AttachDocResponse"/>
+	</message>
+	<message name="GetAccrualsRequestMessage">
+		<part name="parameters"
+				element="tns:GetAccruals"/>
+	</message>
+	<message name="GetAccrualsResponseMessage">
+		<part name="parameters"
+				element="tns:GetAccrualsResponse"/>
+	</message>
+	<message name="AddAppointementRequestMessage">
+		<part name="parameters"
+				element="tns:AddAppointement"/>
+	</message>
+	<message name="AddAppointementResponseMessage">
+		<part name="parameters"
+				element="tns:AddAppointementResponse"/>
+	</message>
+	<message name="ReAppointmentRequestMessage">
+		<part name="parameters"
+				element="tns:ReAppointment"/>
+	</message>
+	<message name="ReAppointmentResponseMessage">
+		<part name="parameters"
+				element="tns:ReAppointmentResponse"/>
+	</message>
+	<portType name="HR_PortalPortType">
+		<operation name="GetInfo">
+			<input message="tns:GetInfoRequestMessage"/>
+			<output message="tns:GetInfoResponseMessage"/>
+		</operation>
+		<operation name="CreatePerson">
+			<input message="tns:CreatePersonRequestMessage"/>
+			<output message="tns:CreatePersonResponseMessage"/>
+		</operation>
+		<operation name="ChangePerson">
+			<input message="tns:ChangePersonRequestMessage"/>
+			<output message="tns:ChangePersonResponseMessage"/>
+		</operation>
+		<operation name="GetPosition">
+			<input message="tns:GetPositionRequestMessage"/>
+			<output message="tns:GetPositionResponseMessage"/>
+		</operation>
+		<operation name="GetMarital">
+			<input message="tns:GetMaritalRequestMessage"/>
+			<output message="tns:GetMaritalResponseMessage"/>
+		</operation>
+		<operation name="GetSchedule">
+			<input message="tns:GetScheduleRequestMessage"/>
+			<output message="tns:GetScheduleResponseMessage"/>
+		</operation>
+		<operation name="GetSubdivision">
+			<input message="tns:GetSubdivisionRequestMessage"/>
+			<output message="tns:GetSubdivisionResponseMessage"/>
+		</operation>
+		<operation name="GetEducationType">
+			<input message="tns:GetEducationTypeRequestMessage"/>
+			<output message="tns:GetEducationTypeResponseMessage"/>
+		</operation>
+		<operation name="GetFormEducation">
+			<input message="tns:GetFormEducationRequestMessage"/>
+			<output message="tns:GetFormEducationResponseMessage"/>
+		</operation>
+		<operation name="GetInstitution">
+			<input message="tns:GetInstitutionRequestMessage"/>
+			<output message="tns:GetInstitutionResponseMessage"/>
+		</operation>
+		<operation name="GetSpecialty">
+			<input message="tns:GetSpecialtyRequestMessage"/>
+			<output message="tns:GetSpecialtyResponseMessage"/>
+		</operation>
+		<operation name="CreatEmployee">
+			<input message="tns:CreatEmployeeRequestMessage"/>
+			<output message="tns:CreatEmployeeResponseMessage"/>
+		</operation>
+		<operation name="GetDismissalArticles">
+			<input message="tns:GetDismissalArticlesRequestMessage"/>
+			<output message="tns:GetDismissalArticlesResponseMessage"/>
+		</operation>
+		<operation name="GetDismissalReasons">
+			<input message="tns:GetDismissalReasonsRequestMessage"/>
+			<output message="tns:GetDismissalReasonsResponseMessage"/>
+		</operation>
+		<operation name="FireEmployee">
+			<input message="tns:FireEmployeeRequestMessage"/>
+			<output message="tns:FireEmployeeResponseMessage"/>
+		</operation>
+		<operation name="AttachDoc">
+			<input message="tns:AttachDocRequestMessage"/>
+			<output message="tns:AttachDocResponseMessage"/>
+		</operation>
+		<operation name="GetAccruals">
+			<input message="tns:GetAccrualsRequestMessage"/>
+			<output message="tns:GetAccrualsResponseMessage"/>
+		</operation>
+		<operation name="AddAppointement">
+			<input message="tns:AddAppointementRequestMessage"/>
+			<output message="tns:AddAppointementResponseMessage"/>
+		</operation>
+		<operation name="ReAppointment">
+			<input message="tns:ReAppointmentRequestMessage"/>
+			<output message="tns:ReAppointmentResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="HR_PortalSoapBinding"
+			type="tns:HR_PortalPortType">
+		<soapbind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetInfo">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetInfo"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreatePerson">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:CreatePerson"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePerson">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:ChangePerson"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetPosition">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetPosition"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetMarital">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetMarital"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSchedule">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetSchedule"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSubdivision">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetSubdivision"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetEducationType">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetEducationType"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetFormEducation">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetFormEducation"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetInstitution">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetInstitution"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSpecialty">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetSpecialty"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreatEmployee">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:CreatEmployee"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDismissalArticles">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetDismissalArticles"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDismissalReasons">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetDismissalReasons"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FireEmployee">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:FireEmployee"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AttachDoc">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:AttachDoc"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAccruals">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetAccruals"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AddAppointement">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:AddAppointement"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ReAppointment">
+			<soapbind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:ReAppointment"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="HR_PortalSoap12Binding"
+			type="tns:HR_PortalPortType">
+		<soap12bind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetInfo">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetInfo"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreatePerson">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:CreatePerson"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePerson">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:ChangePerson"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetPosition">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetPosition"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetMarital">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetMarital"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSchedule">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetSchedule"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSubdivision">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetSubdivision"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetEducationType">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetEducationType"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetFormEducation">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetFormEducation"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetInstitution">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetInstitution"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSpecialty">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetSpecialty"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreatEmployee">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:CreatEmployee"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDismissalArticles">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetDismissalArticles"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDismissalReasons">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetDismissalReasons"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="FireEmployee">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:FireEmployee"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AttachDoc">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:AttachDoc"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAccruals">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:GetAccruals"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AddAppointement">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:AddAppointement"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ReAppointment">
+			<soap12bind:operation style="document"
+					soapAction="http://10.22.33.20/hr_portal#HR_Portal:ReAppointment"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="HR_Portal">
+		<port name="HR_PortalSoap"
+				binding="tns:HR_PortalSoapBinding">
+			<documentation> 
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
+						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soapbind:address location="http://10.22.33.29/busmarket_rusin/ws/hr_portal.1cws"/>
+		</port>
+		<port name="HR_PortalSoap12"
+				binding="tns:HR_PortalSoap12Binding">
+			<soap12bind:address location="http://10.22.33.29/busmarket_rusin/ws/hr_portal.1cws"/>
+		</port>
+	</service>
+</definitions>

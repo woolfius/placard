@@ -1,0 +1,15 @@
+Flask
+Flask-Cache
+Flask-WTF
+WTForms
+gunicorn
+ldap3
+PyMySQL
+Flask-Login
+suds-jurko
+requests
+timestring
+bs4
+SQLAlchemy
+marshmallow-sqlalchemy
+pyopenssl

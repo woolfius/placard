@@ -1,0 +1,469 @@
+15:47:02,399 app INFO створення OU=OtherUser - 6
+
+15:52:59,31 app INFO створення користувача в AD - 7
+
+16:05:34,121 app INFO sid - S-1-5-21-3915682675-1099836910-3992233257-5540
+11:13:43,371 app ERROR Exception on /api/dismissed/worker/87 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 82, in send
+    fp = self.u2open(u2request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 132, in u2open
+    return url.open(u2request, timeout=tm)
+  File "C:\Python36\lib\urllib\request.py", line 532, in open
+    response = meth(req, response)
+  File "C:\Python36\lib\urllib\request.py", line 642, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "C:\Python36\lib\urllib\request.py", line 570, in error
+    return self._call_chain(*args)
+  File "C:\Python36\lib\urllib\request.py", line 504, in _call_chain
+    result = func(*args)
+  File "C:\Python36\lib\urllib\request.py", line 650, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 500: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\client.py", line 613, in send
+    reply = self.options.transport.send(request)
+  File "C:\Python36\lib\site-packages\suds\transport\https.py", line 66, in send
+    return HttpTransport.send(self, request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 94, in send
+    raise TransportError(e.msg, e.code, e.fp)
+suds.transport.TransportError: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 125, in dismiss_worker
+    {"status": 'dismissed', "finished_to_work": data['date'][0:10],
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\_1c_utils.py", line 164, in dismiss_employee
+    res = SOAP.service.FireEmployee(code=code, dismissalarticle=dismissalarticle, dismissalreason=dismissalreason)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 521, in __call__
+    return client.invoke(args, kwargs)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 581, in invoke
+    result = self.send(soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 619, in send
+    description=tostr(e), original_soapenv=original_soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 670, in process_reply
+    raise WebFault(fault, replyroot)
+suds.WebFault: Server raised fault: 'Неизвестная ошибка. {WebСервис.HR_Portal.Модуль(1637)}: Преобразование значения к типу Число не может быть выполнено
+по причине:
+{WebСервис.HR_Portal.Модуль(1637)}: Преобразование значения к типу Число не может быть выполнено'
+11:15:09,423 app ERROR Exception on /api/dismissed/worker/87 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 82, in send
+    fp = self.u2open(u2request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 132, in u2open
+    return url.open(u2request, timeout=tm)
+  File "C:\Python36\lib\urllib\request.py", line 532, in open
+    response = meth(req, response)
+  File "C:\Python36\lib\urllib\request.py", line 642, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "C:\Python36\lib\urllib\request.py", line 570, in error
+    return self._call_chain(*args)
+  File "C:\Python36\lib\urllib\request.py", line 504, in _call_chain
+    result = func(*args)
+  File "C:\Python36\lib\urllib\request.py", line 650, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 500: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\client.py", line 613, in send
+    reply = self.options.transport.send(request)
+  File "C:\Python36\lib\site-packages\suds\transport\https.py", line 66, in send
+    return HttpTransport.send(self, request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 94, in send
+    raise TransportError(e.msg, e.code, e.fp)
+suds.transport.TransportError: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 125, in dismiss_worker
+    {"status": 'dismissed', "finished_to_work": data['date'][0:10],
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\_1c_utils.py", line 164, in dismiss_employee
+    res = SOAP.service.FireEmployee(code=code, dismissalarticle=dismissalarticle, dismissalreason=dismissalreason)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 521, in __call__
+    return client.invoke(args, kwargs)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 581, in invoke
+    result = self.send(soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 619, in send
+    description=tostr(e), original_soapenv=original_soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 670, in process_reply
+    raise WebFault(fault, replyroot)
+suds.WebFault: Server raised fault: 'Неизвестная ошибка. {WebСервис.HR_Portal.Модуль(1637)}: Преобразование значения к типу Число не может быть выполнено
+по причине:
+{WebСервис.HR_Portal.Модуль(1637)}: Преобразование значения к типу Число не может быть выполнено'
+11:17:43,82 app ERROR Exception on /api/dismissed/worker/87 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 82, in send
+    fp = self.u2open(u2request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 132, in u2open
+    return url.open(u2request, timeout=tm)
+  File "C:\Python36\lib\urllib\request.py", line 532, in open
+    response = meth(req, response)
+  File "C:\Python36\lib\urllib\request.py", line 642, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "C:\Python36\lib\urllib\request.py", line 570, in error
+    return self._call_chain(*args)
+  File "C:\Python36\lib\urllib\request.py", line 504, in _call_chain
+    result = func(*args)
+  File "C:\Python36\lib\urllib\request.py", line 650, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 500: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\client.py", line 613, in send
+    reply = self.options.transport.send(request)
+  File "C:\Python36\lib\site-packages\suds\transport\https.py", line 66, in send
+    return HttpTransport.send(self, request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 94, in send
+    raise TransportError(e.msg, e.code, e.fp)
+suds.transport.TransportError: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 125, in dismiss_worker
+    {"status": 'dismissed', "finished_to_work": data['date'][0:10],
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\_1c_utils.py", line 164, in dismiss_employee
+    res = SOAP.service.FireEmployee(code=code, dismissalarticle=dismissalarticle, dismissalreason=dismissalreason,enddate=enddate)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 521, in __call__
+    return client.invoke(args, kwargs)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 581, in invoke
+    result = self.send(soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 619, in send
+    description=tostr(e), original_soapenv=original_soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 670, in process_reply
+    raise WebFault(fault, replyroot)
+suds.WebFault: Server raised fault: 'Неизвестная ошибка. {WebСервис.HR_Portal.Модуль(1637)}: Преобразование значения к типу Число не может быть выполнено
+по причине:
+{WebСервис.HR_Portal.Модуль(1637)}: Преобразование значения к типу Число не может быть выполнено'
+11:20:20,624 app ERROR Exception on /api/dismissed/worker/87 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 120, in dismiss_worker
+    if not response['result']:
+TypeError: 'bool' object is not subscriptable
+11:22:22,111 app ERROR Exception on /api/dismissed/worker/87 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 120, in dismiss_worker
+    if not response['result']:
+TypeError: 'bool' object is not subscriptable
+11:23:28,388 app ERROR Exception on /api/dismissed/worker/87 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 120, in dismiss_worker
+    if not response['result']:
+TypeError: 'bool' object is not subscriptable
+11:41:53,849 app ERROR Exception on /api/dismissed/worker/691 [POST]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 82, in send
+    fp = self.u2open(u2request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 132, in u2open
+    return url.open(u2request, timeout=tm)
+  File "C:\Python36\lib\urllib\request.py", line 532, in open
+    response = meth(req, response)
+  File "C:\Python36\lib\urllib\request.py", line 642, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "C:\Python36\lib\urllib\request.py", line 570, in error
+    return self._call_chain(*args)
+  File "C:\Python36\lib\urllib\request.py", line 504, in _call_chain
+    result = func(*args)
+  File "C:\Python36\lib\urllib\request.py", line 650, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 500: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\suds\client.py", line 613, in send
+    reply = self.options.transport.send(request)
+  File "C:\Python36\lib\site-packages\suds\transport\https.py", line 66, in send
+    return HttpTransport.send(self, request)
+  File "C:\Python36\lib\site-packages\suds\transport\http.py", line 94, in send
+    raise TransportError(e.msg, e.code, e.fp)
+suds.transport.TransportError: Internal server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\worker\views.py", line 119, in dismiss_worker
+    response = dismiss_employee(card_number[0], data['article']['code'], data['reason']['code'], data['date'][0:10])
+  File "D:\____busmarket\projects\bm_hr_portal\application\dist\_1c_utils.py", line 164, in dismiss_employee
+    res = SOAP.service.FireEmployee(code=code, dismissalarticle=dismissalarticle, dismissalreason=dismissalreason,enddate=enddate)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 521, in __call__
+    return client.invoke(args, kwargs)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 581, in invoke
+    result = self.send(soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 619, in send
+    description=tostr(e), original_soapenv=original_soapenv)
+  File "C:\Python36\lib\site-packages\suds\client.py", line 670, in process_reply
+    raise WebFault(fault, replyroot)
+suds.WebFault: Server raised fault: 'Неизвестная ошибка. {WebСервис.HR_Portal.Модуль(1667)}: Ошибка при вызове метода контекста (Записать)
+по причине:
+{WebСервис.HR_Portal.Модуль(1667)}: Ошибка при вызове метода контекста (Записать)
+по причине:
+
+по причине:
+Запись с такими ключевыми полями существует! : Работники: 19.06.2018 23:59:59, Тестовий Юзер Юзер (Регистр сведений: Работники; Номер строки: 2)'
+09:17:37,907 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+16:13:09,606 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+15:31:11,341 app INFO створення OU=OtherUser - False
+
+09:38:39,175 app INFO створення OU=OtherUser - False
+
+10:02:07,509 app INFO email успішно відправлено.
+
+10:02:12,883 app INFO email успішно відправлено.
+
+10:02:17,783 app INFO email успішно відправлено.
+
+10:02:22,614 app INFO email успішно відправлено.
+
+10:02:27,255 app INFO email успішно відправлено.
+
+10:02:31,819 app INFO email успішно відправлено.
+
+10:02:37,630 app INFO email успішно відправлено.
+
+10:27:42,207 app INFO email успішно відправлено.
+
+10:59:57,512 app INFO email успішно відправлено.
+
+11:00:02,341 app INFO email успішно відправлено.
+
+11:00:07,12 app INFO email успішно відправлено.
+
+11:00:11,606 app INFO email успішно відправлено.
+
+11:00:16,12 app INFO email успішно відправлено.
+
+11:23:50,711 app INFO email успішно відправлено.
+
+11:27:03,652 app INFO email успішно відправлено.
+
+11:27:08,385 app INFO email успішно відправлено.
+
+11:27:13,671 app INFO email успішно відправлено.
+
+11:29:17,278 app INFO email успішно відправлено.
+
+11:29:22,558 app INFO email успішно відправлено.
+
+11:29:27,840 app INFO email успішно відправлено.
+
+11:29:50,381 app INFO email успішно відправлено.
+
+11:32:08,810 app INFO email успішно відправлено.
+
+11:38:05,737 app INFO email успішно відправлено.
+
+11:38:18,128 app INFO email успішно відправлено.
+
+11:40:06,799 app INFO email успішно відправлено.
+
+11:42:16,206 app INFO email успішно відправлено.
+
+11:42:20,284 app INFO email успішно відправлено.
+
+11:42:25,347 app INFO email успішно відправлено.
+
+11:42:30,317 app INFO email успішно відправлено.
+
+11:42:35,474 app INFO email успішно відправлено.
+
+11:42:39,957 app INFO email успішно відправлено.
+
+11:42:44,566 app INFO email успішно відправлено.
+
+11:42:50,66 app INFO email успішно відправлено.
+
+11:42:54,451 app INFO email успішно відправлено.
+
+11:42:59,364 app INFO email успішно відправлено.
+
+15:06:25,81 app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [***********************]
+15:06:32,290 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:28:18,191 flask.app INFO [ACCESS GRANTED] Користувач [Yurii.Volchak@busmarket.ua] успішно авторизивоний
+12:46:21,329 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:31,124 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:43,438 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:45,279 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:45,914 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:46,145 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:46,498 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:46:53,935 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+12:47:00,284 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+12:47:10,780 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+12:47:12,737 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+12:47:23,672 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+12:47:30,33 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+12:47:49,808 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+12:48:33,455 flask.app INFO [ACCESS DENIED] Не правильний логін [marian.reverendak@busmarket.ua] або пароль [**********]
+12:49:23,708 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [**********]
+12:49:55,94 flask.app INFO [ACCESS GRANTED] Користувач [marian.reverenda@busmarket.ua] успішно авторизивоний
+15:37:49,344 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:11:48,600 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:00:08,775 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:00:27,411 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+10:01:27,345 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [********]
+10:01:28,638 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+10:01:34,243 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:48:21,24 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:14:16,746 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:40:32,223 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+15:46:33,267 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:08:50,234 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:52:24,129 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:55:44,124 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:15:04,922 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:16:30,60 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:18:46,564 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:21:53,814 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:28:14,186 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:46:40,606 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:58:02,30 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:20:20,511 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:21:42,29 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:23:38,497 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:04:21,539 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:00:34,594 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:33:45,636 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+15:32:14,79 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+15:30:22,746 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:51:34,360 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:37:33,253 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:14:11,759 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:01:39,338 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:54:22,56 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:52:14,787 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:32:43,278 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:00:42,176 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+10:00:50,854 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:41:17,1 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:28:10,454 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+15:00:53,587 flask.app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+15:01:00,986 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:16:55,386 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+09:44:13,686 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+10:23:54,593 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:50:34,143 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:16:21,577 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+17:12:29,137 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+14:03:54,401 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+15:26:33,413 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+16:00:28,890 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:40:48,93 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+11:56:41,67 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+12:01:16,27 flask.app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:01:18,653 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:01:56,591 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:02:06,62 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:02:11,723 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:02:22,557 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:02:36,83 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:02:58,425 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
+13:04:02,172 app INFO [ACCESS DENIED] Не правильний логін [yurii.volchak@busmarket.ua] або пароль [*********]
+10:20:29,887 app INFO [ACCESS GRANTED] Користувач [yurii.volchak@busmarket.ua] успішно авторизивоний
