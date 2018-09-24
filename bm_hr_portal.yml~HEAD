@@ -1,0 +1,155 @@
+---
+- name: "Connect to Docker node"
+  hosts: DockerHost
+  gather_facts: False
+  vars:
+    projectname: "bm_hr_portal"
+    #Local/Remote Project Directory
+    lprojectdir: "/etc/playbook/DockerDeploy/"
+    rprojectdir: "/etc/docker/projects/"
+    imgs: "bm_hr_portal"
+  tasks:
+
+# BLOCK 1. CREATE DIR AND UNARCHIVE PROJECT ON THE DOCKER HOST
+    - name: "Delete dir with project"
+      file:
+        path: "{{rprojectdir}}{{projectname}}"
+        state: absent
+      tags:
+        - source_files
+
+    - name: "Create dir for project"
+      file:
+        path: "{{rprojectdir}}{{projectname}}"
+        state: directory
+        mode: 0755
+      tags:
+        - source_files
+
+    - name: "Copy project archive form Ansible to remote Docker hosts"
+      copy:
+        src: "{{lprojectdir}}{{projectname}}.zip"
+        dest: "{{rprojectdir}}{{projectname}}"
+        force: yes
+      tags:
+        - source_files
+
+    - name: "Un-archive project"
+      unarchive:
+        src: "{{rprojectdir}}{{projectname}}/{{projectname}}.zip"
+        dest: "{{rprojectdir}}{{projectname}}"
+        remote_src: True
+      tags:
+        - source_files
+
+    - name: "Delete archive from project"
+      file:
+        path: "{{rprojectdir}}{{projectname}}/{{projectname}}.zip"
+        state: absent
+      tags:
+        - source_files
+
+# BLOCK 2.  CHECK RUNNING IMAGES
+    - name: "Checking exist image"
+      shell: docker images |grep "latest"
+      register: imglist
+      ignore_errors: yes
+      tags:
+        - image
+
+# BLOCK 3.  CREATE DOCKER IMAGES
+    - name: "Re-TAG Old Images"
+      shell: docker tag {{ item }}:latest {{ item }}:stable
+      with_items:
+        -  "{{ imgs }}"
+      when:
+        - item in imglist.stdout and "'latest' in imglist.stdout"
+      tags:
+        - image
+
+    - name: "Remove Images tag:latest"
+      shell: "docker rmi {{ item }}:latest"
+      with_items:
+        -  "{{ imgs }}"
+      when:
+        - item in imglist.stdout and "'latest' in imglist.stdout"
+      tags:
+        - image
+
+    - name: "Create New Images"
+      docker_image:
+        path: "{{rprojectdir}}{{projectname}}"
+        dockerfile: "{{rprojectdir}}{{projectname}}/Dockerfile"
+        force: yes
+        name: "{{ item }}"
+        nocache: yes
+        pull: no
+      with_items:
+        -  "{{ imgs }}"
+      tags:
+        - image
+
+    - name: "Checking exist containers"
+      shell: docker container ls --format "table {% raw %}{{.ID}}\t{{.Image}}\t{{.Names}}{% endraw %}" | grep "bm_hr_portal" | awk '{print $3}'
+      register: containers
+      ignore_errors: yes
+      tags:
+        - containers_check
+
+    - name: "Rename old containers"
+      shell: "docker rename {{ item }} {{ item }}.4DELETE"
+      with_items: "{{ containers.stdout_lines }}"
+      when: containers.stderr == ""
+
+    - name: "Start service"
+      docker_container:
+        image: "{{projectname}}"
+        name: "{{projectname}}{{ item }}"
+        recreate: yes
+        env:
+          AUTHORIZATION_PASSWORD: "{{ AUTHORIZATION_PASSWORD }}"
+          BASE_DN: "{{ BASE_DN }}"
+          DC_SERVER: "{{ DC_SERVER }}"
+          DC_USERNAME: "{{ DC_USERNAME }}"
+          DC_PASSWORD: "{{ DC_PASSWORD }}"
+          DEGUG: "{{ DEBUG }}"
+          MAIL_SERVER: "{{ MAIL_SERVER }}"
+          MAIL_PORT: "{{ MAIL_PORT }}"
+          MAIL_USE_SSL: "{{ MAIL_USE_SSL }}"
+          MAIL_USERNAME: "{{ MAIL_USERNAME }}"
+          MAIL_PASSWORD: "{{ MAIL_PASSWORD }}"
+          MYSQL_DB_NAME: "{{ MYSQL_DB_NAME }}"
+          MYSQL_ROOT_USER: "{{ MYSQL_ROOT_USER }}"
+          MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
+          MYSQL_PORT_3306_TCP_PORT: "{{ MYSQL_PORT_3306_TCP_PORT }}"
+          MYSQL_PORT_3306_TCP_ADDR: "{{ MYSQL_PORT_3306_TCP_ADDR }}"
+          SECRET_KEY: "{{ SECRET_KEY }}"
+          WSDL: "{{ WSDL }}"
+          VIRTUAL_HOST: "{{ VIRTUAL_HOST }}"
+        restart: yes
+        restart_policy: "on-failure"
+        restart_retries: 3
+      with_sequence: count=3
+      register: servicestatus
+#      when: mysqlstatus.stderr == ""
+
+    - name: "Wait 10 seconds, for check health new started containers"
+      wait_for: timeout=10
+      delegate_to: localhost
+
+    - name: "Checking exist containers for rollback"
+      shell: docker container ls --format "table {% raw %}{{.Names}}{% endraw %}" | grep "bm_hr_portal" | grep -v "4DELETE" |wc -l
+      register: DELETE4
+      ignore_errors: yes
+      tags:
+        - containers_check
+
+    - name: "Rollback backup containers to production status"
+      shell: "docker rename {{ item }}.4DELETE {{ item }}"
+      with_items: "{{ containers.stdout_lines }}"
+      when: DELETE4.stdout == 0
+
+    - name: "Delete backup containers"
+      shell: "docker rm -f {{ item }}.4DELETE"
+      with_items: "{{ containers.stdout_lines }}"
+      when: DELETE4.stdout != 0

@@ -1,0 +1,22 @@
+{
+  "name": "bm_photos",
+  "authors": [
+    "IT-BM Group <it@busmarket.ua>"
+  ],
+  "description": "Photographer interface",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-animate": "^1.6.5",
+    "angular-touch": "^1.6.5"
+  }
+}
